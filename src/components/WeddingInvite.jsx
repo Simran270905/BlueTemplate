@@ -140,9 +140,9 @@ const WeddingInvite = () => {
           className="font-para text-[11px] sm:text-xs md:text-sm tracking-wide text-slate-600 leading-relaxed max-w-sm mx-auto"
           variants={fadeUp}
         >
-          123 Anywhere St., Any City,
+          The Taj Mahal Palace,Apollo Bandar, Colaba,  
           <br />
-          ST 12345
+          Mumbai,Maharashtra 400001
         </motion.p>
       </motion.div>
     </section>
