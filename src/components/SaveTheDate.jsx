@@ -1,122 +1,88 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 import flower1 from "../assets/Image/flower1.png";
 
 const SaveTheDate = () => {
-  const containerVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.8, ease: "easeOut" }
-    }
-  };
-
-  const staggeredVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
+  const fadeUp = {
+    hidden: { opacity: 0, y: 14 },
+    visible: (delay = 0) => ({
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 }
-    }
+      transition: { delay, duration: 0.45, ease: "easeOut" },
+    }),
   };
 
   return (
-    <section className="w-full flex justify-center px-3 sm:px-4">
+    <section className="w-full flex justify-center px-4 py-20 bg-transparent">
       <motion.div
         className="
-          relative
-          w-full
-          max-w-[900px]
-          min-h-[500px]
-          shadow-[0_25px_60px_rgba(0,0,0,0.18)]
-          rounded-2xl
-          px-4 py-8
-          sm:px-6 sm:py-10
-          md:px-12 md:py-14
-          lg:px-14 lg:py-16
+          relative w-full max-w-[900px] min-h-[520px]
+          rounded-3xl overflow-hidden
+          border border-[#d4af37]/70
+          shadow-[0_20px_50px_rgba(90,120,180,0.25)]
           text-center
-          overflow-hidden
-          border border-amber-100/60
         "
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        whileHover={{ y: -4, scale: 1.01 }}
+        initial={{ opacity: 0, scale: 0.97 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8 }}
       >
-        {/* Background image - MORE VISIBLE & DARKER */}
-        <div className="absolute inset-0 z-0">
-          <motion.img
-            src={flower1}
-            alt=""
-            className="w-full h-full object-cover scale-x-[-1]"
-            initial={{ scale: 1.3, opacity: 0 }}
-            animate={{ scale: 1, opacity: 0.85 }}  // Increased from 0.6 to 0.85
-            transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
-          />
-        </div>
+        {/* Background Image */}
+        <motion.img
+          src={flower1}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover scale-x-[-1]"
+          initial={{ scale: 1.05, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.42 }}
+          transition={{ duration: 1.1, ease: "easeOut" }}
+        />
 
-        {/* Darker overlay - REDUCED OPACITY */}
-        <div className="absolute inset-0 bg-[#fbf2e6]/60 z-10 backdrop-blur-sm" />  
+        {/* Cool ivory overlay (matches blue bg) */}
+        <div className="absolute inset-0 bg-[#f9fafc]/75 z-10" />
 
-        {/* Text content */}
-        <motion.div 
-          className="relative z-20 text-amber-900 flex flex-col items-center justify-center h-full space-y-2 sm:space-y-3 md:space-y-4 px-2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-        >
-          <motion.h1 
-            className="font-playfair text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-[0.2em] sm:tracking-[0.35em] bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 bg-clip-text text-transparent font-bold drop-shadow-2xl"
-            variants={staggeredVariants}
-            transition={{ delay: 0.4 }}
-            whileHover={{ scale: 1.05 }}
+        {/* Soft blue inner glow */}
+        <div className="absolute inset-0 z-20 pointer-events-none shadow-[inset_0_0_140px_rgba(160,185,230,0.25)]" />
+
+        {/* Content */}
+        <div className="relative z-30 flex flex-col items-center justify-center min-h-[520px] px-6 space-y-3">
+          <motion.h1
+            className="font-head text-4xl sm:text-5xl md:text-6xl font-bold text-[#d4af37]"
+            variants={fadeUp}
+            custom={0.3}
           >
-            SAVE
+            Avantika
           </motion.h1>
 
-          <motion.p 
-            className="font-playfair italic text-2xl sm:text-3xl md:text-4xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 bg-clip-text text-transparent drop-shadow-xl"
-            variants={staggeredVariants}
-            transition={{ delay: 0.6 }}
+          <motion.p
+            className="text-3xl italic text-[#d4af37]"
+            variants={fadeUp}
+            custom={0.5}
           >
-            the
+            &
           </motion.p>
 
-          <motion.h2 
-            className="font-playfair text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-[0.2em] sm:tracking-[0.35em] bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 bg-clip-text text-transparent font-bold drop-shadow-2xl"
-            variants={staggeredVariants}
-            transition={{ delay: 0.8 }}
-            whileHover={{ scale: 1.05 }}
+          <motion.h2
+            className="font-head text-5xl sm:text-6xl md:text-7xl font-bold text-[#d4af37]"
+            variants={fadeUp}
+            custom={0.7}
           >
-            DATE
+            Rihaan
           </motion.h2>
 
-          <motion.p 
-            className="font-playfair font-light text-xl sm:text-2xl md:text-3xl lg:text-4xl tracking-wide text-amber-900 drop-shadow-lg"
-            variants={staggeredVariants}
-            transition={{ delay: 1.0 }}
+          <motion.p
+            className="text-xl font-title sm:text-2xl tracking-wide text-[#b8962e]"
+            variants={fadeUp}
+            custom={0.9}
           >
-            08.08.32
+            08 · 08 · 2032
           </motion.p>
 
-          <motion.p 
-            className="font-sans font-semibold text-xs sm:text-sm md:text-base tracking-[0.25em] text-amber-800 uppercase"
-            variants={staggeredVariants}
-            transition={{ delay: 1.2 }}
+          <motion.p
+            className="uppercase tracking-[0.35em] font-par text-xs sm:text-sm font-semibold text-[#b8962e]"
+            variants={fadeUp}
+            custom={1.1}
           >
-            BRIDE & GROOM
+            Save the Date
           </motion.p>
-
-          <motion.p 
-            className="font-mono text-[10px] sm:text-xs md:text-sm tracking-wide leading-tight text-amber-900 max-w-md mx-auto"
-            variants={staggeredVariants}
-            transition={{ delay: 1.4 }}
-          >
-            STARTS AT 3 PM
-            <br />
-            123 Anywhere St, Any City
-          </motion.p>
-        </motion.div>
+        </div>
       </motion.div>
     </section>
   );

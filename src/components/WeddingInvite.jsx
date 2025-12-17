@@ -80,7 +80,7 @@ const WeddingInvite = () => {
 
         {/* Header */}
         <motion.p
-          className="font-sans text-[9px] sm:text-[10px] md:text-xs tracking-[0.25em] sm:tracking-[0.3em] text-slate-500 mb-6 sm:mb-8 md:mb-10 uppercase"
+          className="font-para text-[9px] sm:text-[10px] md:text-xs tracking-[0.25em] sm:tracking-[0.3em] text-slate-500 mb-6 sm:mb-8 md:mb-10 uppercase"
           variants={fadeUp}
         >
           You Are Invited To
@@ -90,26 +90,26 @@ const WeddingInvite = () => {
 
         {/* Names */}
         <motion.h1
-          className="font-playfair text-3xl sm:text-3xl md:text-4xl lg:text-5xl text-[#8FA7BF] mb-1 sm:mb-2 md:mb-3"
+          className="font-monster text-3xl sm:text-3xl md:text-4xl lg:text-6xl text-[#8FA7BF] mb-1 sm:mb-2 md:mb-3"
           variants={nameVariants}
           whileHover={{ scale: 1.03 }}
         >
-          Bride
+          Avantika
         </motion.h1>
 
         <motion.p
-          className="font-playfair text-2xl sm:text-2xl md:text-3xl text-[#8FA7BF] mb-1 sm:mb-2 md:mb-3"
+          className="font-monster text-2xl sm:text-2xl md:text-3xl text-[#8FA7BF] mb-1 sm:mb-2 md:mb-3"
           variants={fadeUp}
         >
           &
         </motion.p>
 
         <motion.h1
-          className="font-playfair text-3xl sm:text-3xl md:text-4xl lg:text-5xl text-[#8FA7BF] mb-6 sm:mb-8 md:mb-10"
+          className="font-monster text-3xl sm:text-3xl md:text-4xl lg:text-6xl text-[#8FA7BF] mb-6 sm:mb-8 md:mb-10"
           variants={nameVariants}
           whileHover={{ scale: 1.03 }}
         >
-          Groom
+          Rihaan
         </motion.h1>
 
         {/* Date */}
@@ -117,19 +117,19 @@ const WeddingInvite = () => {
           className="flex justify-center items-center gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6 md:mb-8"
           variants={fadeUp}
         >
-          <p className="font-sans text-[10px] sm:text-[11px] md:text-xs tracking-[0.25em] text-slate-600">
+          <p className="font-para text-[10px] sm:text-[11px] md:text-xs tracking-[0.25em] text-slate-600">
             SATURDAY
           </p>
-          <p className="font-playfair text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-slate-800">
+          <p className="font-para text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-slate-800">
             8
           </p>
-          <p className="font-sans text-[10px] sm:text-[11px] md:text-xs tracking-[0.25em] text-slate-600">
+          <p className="font-para text-[10px] sm:text-[11px] md:text-xs tracking-[0.25em] text-slate-600">
             AT 03:00 PM
           </p>
         </motion.div>
 
         <motion.p
-          className="font-sans text-[10px] sm:text-[11px] md:text-xs tracking-[0.25em] text-slate-600 mb-4 sm:mb-6 md:mb-8 uppercase"
+          className="font-para text-[10px] sm:text-[11px] md:text-xs tracking-[0.25em] text-slate-600 mb-4 sm:mb-6 md:mb-8 uppercase"
           variants={fadeUp}
         >
           AUGUST
@@ -137,7 +137,7 @@ const WeddingInvite = () => {
 
         {/* Address */}
         <motion.p
-          className="font-sans text-[11px] sm:text-xs md:text-sm tracking-wide text-slate-600 leading-relaxed max-w-sm mx-auto"
+          className="font-para text-[11px] sm:text-xs md:text-sm tracking-wide text-slate-600 leading-relaxed max-w-sm mx-auto"
           variants={fadeUp}
         >
           123 Anywhere St., Any City,

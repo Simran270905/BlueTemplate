@@ -77,7 +77,7 @@ const EntourageSecondary = () => {
 
         {/* Guiding text */}
         <motion.p
-          className="font-sans text-[9px] sm:text-[10px] md:text-xs tracking-[0.25em] sm:tracking-[0.3em] text-slate-500 mb-6 sm:mb-8 md:mb-10 uppercase"
+          className="font-para font-bold text-[9px] sm:text-[10px] md:text-xs tracking-[0.25em] sm:tracking-[0.3em] text-slate-500 mb-6 sm:mb-8 md:mb-10 uppercase"
           variants={topTextVariants}
         >
           To Guide Us In Our Sacred Journey
@@ -89,10 +89,10 @@ const EntourageSecondary = () => {
           variants={blockVariants}
         >
           <div>
-            <p className="font-sans text-[9px] sm:text-[10px] md:text-xs tracking-[0.25em] sm:tracking-[0.3em] text-slate-500 mb-2 sm:mb-3 md:mb-4 uppercase">
+            <p className="font-para font-bold text-[9px] sm:text-[10px] md:text-xs tracking-[0.25em] sm:tracking-[0.2em] text-slate-500 mb-2 sm:mb-3 md:mb-4 uppercase">
               Groom’s Brothers & Cousins
             </p>
-            <p className="font-light text-xs sm:text-sm md:text-base leading-relaxed">
+            <p className="font-font text-xs sm:text-sm md:text-base leading-relaxed">
               Name Here
               <br />
               Name Here
@@ -102,10 +102,10 @@ const EntourageSecondary = () => {
           </div>
 
           <div>
-            <p className="font-sans text-[9px] sm:text-[10px] md:text-xs tracking-[0.25em] sm:tracking-[0.3em] text-slate-500 mb-2 sm:mb-3 md:mb-4 uppercase">
+            <p className="font-para font-bold text-[9px] sm:text-[10px] md:text-xs tracking-[0.25em] sm:tracking-[0.2em] text-slate-500 mb-2 sm:mb-3 md:mb-4 uppercase">
               Bride’s Sisters & Cousins
             </p>
-            <p className="font-light text-xs sm:text-sm md:text-base leading-relaxed">
+            <p className="font-font text-xs sm:text-sm md:text-base leading-relaxed">
               Name Here
               <br />
               Name Here
@@ -120,11 +120,11 @@ const EntourageSecondary = () => {
           className="mb-8 sm:mb-10 md:mb-12"
           variants={blockVariants}
         >
-          <p className="font-sans text-[9px] sm:text-[10px] md:text-xs tracking-[0.25em] sm:tracking-[0.3em] text-slate-500 mb-3 sm:mb-4 md:mb-6 uppercase">
+          <p className="font-para font-bold text-[9px] sm:text-[10px] md:text-xs tracking-[0.25em] sm:tracking-[0.3em] text-slate-500 mb-3 sm:mb-4 md:mb-6 uppercase">
             Ceremonial Roles
           </p>
 
-          <div className="space-y-3 sm:space-y-4 md:space-y-5 text-xs sm:text-sm md:text-base text-slate-700">
+          <div className="font-para space-y-3 sm:space-y-4 md:space-y-5 text-xs sm:text-sm md:text-base text-slate-700">
             <p>
               <span className="font-medium text-slate-800">Pujari (Priest):</span>{" "}
               Name Here
@@ -144,10 +144,10 @@ const EntourageSecondary = () => {
 
         {/* Flower girls */}
         <motion.div variants={blockVariants}>
-          <p className="font-sans text-[9px] sm:text-[10px] md:text-xs tracking-[0.25em] sm:tracking-[0.3em] text-slate-500 mb-2 sm:mb-3 md:mb-4 uppercase">
+          <p className="font-para font-bold text-[9px] sm:text-[10px] md:text-xs tracking-[0.25em] sm:tracking-[0.3em] text-slate-500 mb-2 sm:mb-3 md:mb-4 uppercase">
             Flower Girls
           </p>
-          <p className="font-light text-xs sm:text-sm md:text-base leading-relaxed text-slate-700">
+          <p className="font-light font-font text-xs sm:text-sm md:text-base leading-relaxed text-slate-700">
             Little Guest Name
             <br />
             Little Guest Name

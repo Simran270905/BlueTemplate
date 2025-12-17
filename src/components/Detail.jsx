@@ -59,7 +59,7 @@ export default function Home() {
 
         <div className="flex-1 flex flex-col justify-between p-4 sm:p-6 md:p-8">
           {/* Title */}
-          <motion.h1 className="text-center font-serif text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent mb-3 sm:mb-4 tracking-tight" variants={itemVariants}>
+          <motion.h1 className="text-center font-head text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent mb-3 sm:mb-4 tracking-tight" variants={itemVariants}>
             Details
           </motion.h1>
 
@@ -78,9 +78,10 @@ export default function Home() {
 
           {/* Dress Code */}
           <motion.div className="mb-4 sm:mb-6 flex-1 flex flex-col justify-center" variants={itemVariants}>
-            <p className="font-sans tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-sm font-bold text-slate-700 uppercase mb-2 sm:mb-3 text-center">Dress Code</p>
+            <p className="font-title tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-sm font-bold text-slate-700 uppercase mb-2 sm:mb-3 text-center">
+              Dress Code</p>
             
-            <p className="text-xs sm:text-sm text-slate-600 leading-tight mb-3 sm:mb-4 max-w-sm mx-auto text-center">
+            <p className="font-para text-xs sm:text-sm text-slate-600 leading-tight mb-3 sm:mb-4 max-w-sm mx-auto text-center">
               We kindly encourage our guests to wear formal attire with these colors on our special day.
             </p>
 
@@ -130,19 +131,19 @@ export default function Home() {
           <div className="space-y-3 sm:space-y-4">
             {/* Gifts */}
             <motion.div className="text-center" variants={itemVariants}>
-              <p className="font-sans tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-sm font-bold text-slate-700 uppercase mb-2">A Note on Gifts</p>
-              <p className="text-xs sm:text-sm text-slate-600 leading-tight max-w-sm mx-auto">
+              <p className="font-para tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-sm font-bold text-slate-700 uppercase mb-2">A Note on Gifts</p>
+              <p className="font-para text-xs sm:text-sm text-slate-600 leading-tight max-w-sm mx-auto">
                 Your presence on our wedding is enough. However, if you wish to give us something, monetary gift will be greatly appreciated.
               </p>
             </motion.div>
 
             {/* RSVP */}
             <motion.div className="text-center" variants={itemVariants}>
-              <p className="font-sans tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-sm font-bold text-slate-700 uppercase mb-2">RSVP</p>
-              <p className="text-xs sm:text-sm text-slate-600 mb-2 leading-tight">
+              <p className="font-font tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-sm font-bold text-slate-700 uppercase mb-2">RSVP</p>
+              <p className="font-font text-xs sm:text-sm text-slate-600 mb-2 leading-tight">
                 We have reserved <span className="font-bold text-slate-800">___ seat(s)</span><br/>in your honor.
               </p>
-              <p className="text-xs sm:text-sm text-slate-600 leading-tight">
+              <p className="font-para text-xs sm:text-sm text-slate-600 leading-tight">
                 Kindly respond by <span className="font-semibold text-slate-800">June 1</span>.<br/>
                 Message me at <span className="font-mono tracking-widest text-slate-800 font-bold">01234567890</span><br/>
                 or thru fb/messenger.
