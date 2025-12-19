@@ -1,90 +1,114 @@
 import { motion } from "framer-motion";
+import InviteCard from "./InviteCard";
 import flower1 from "../assets/Image/flower1.png";
 
 const SaveTheDate = () => {
-  const fadeUp = {
-    hidden: { opacity: 0, y: 14 },
-    visible: (delay = 0) => ({
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
       opacity: 1,
-      y: 0,
-      transition: { delay, duration: 0.45, ease: "easeOut" },
-    }),
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+    }
+  };
+
+  const childVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
+  const nameVariants = {
+    hidden: { opacity: 0, scale: 0.9, rotateX: -20 },
+    visible: { 
+      opacity: 1, 
+      scale: 1, 
+      rotateX: 0,
+      transition: { duration: 0.8, ease: "easeOut" }
+    }
+  };
+
+  const dateVariants = {
+    hidden: { opacity: 0, scale: 0.7 },
+    visible: { 
+      opacity: 1, 
+      scale: 1, 
+      transition: { duration: 0.7, ease: "easeOut", bounce: 0.2 }
+    }
   };
 
   return (
-    <section className="w-full flex justify-center px-4 py-20 bg-transparent">
+    <InviteCard>
+      <motion.img
+        src={flower1}
+        className="absolute inset-0 w-full h-full object-cover scale-x-[-1] opacity-60"
+        alt=""
+        animate={{ 
+          scale: [1, 1.05, 1],
+          rotate: [0, 1, -1, 0],
+          transition: { 
+            duration: 4, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }
+        }}
+      />
+
+      <div className="absolute inset-0 bg-[#f9fafc]/75" />
+
       <motion.div
-        className="
-          relative w-full max-w-[900px] min-h-[520px]
-          rounded-3xl overflow-hidden
-          border border-[#d4af37]/70
-          shadow-[0_20px_50px_rgba(90,120,180,0.25)]
-          text-center
-        "
-        initial={{ opacity: 0, scale: 0.97 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
+        className="relative z-10 flex flex-col items-center justify-center h-full text-center space-y-3 px-6"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
       >
-        {/* Background Image */}
-        <motion.img
-          src={flower1}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover scale-x-[-1]"
-          initial={{ scale: 1.05, opacity: 0 }}
-          animate={{ scale: 1, opacity: 0.42 }}
-          transition={{ duration: 1.1, ease: "easeOut" }}
-        />
+        <motion.h1
+          className="font-head text-6xl mb-5 font-bold text-[#d4af37]"
+          variants={nameVariants}
+        >
+          Rihaan
+          
+        </motion.h1>
 
-        {/* Cool ivory overlay (matches blue bg) */}
-        <div className="absolute inset-0 bg-[#f9fafc]/75 z-10" />
+        <motion.p
+          className="text-3xl mb-7 italic text-[#d4af37]"
+          variants={childVariants}
+          animate={{
+            scale: [1, 1.05, 1],
+            transition: { 
+              duration: 2, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }
+          }}
+        >
+          &amp;
+        </motion.p>
 
-        {/* Soft blue inner glow */}
-        <div className="absolute inset-0 z-20 pointer-events-none shadow-[inset_0_0_140px_rgba(160,185,230,0.25)]" />
+        <motion.h2
+          className="font-head text-6xl mb-5 font-bold text-[#d4af37]"
+          variants={nameVariants}
+        >
+          Avantika
+        </motion.h2>
 
-        {/* Content */}
-        <div className="relative z-30 flex flex-col items-center justify-center min-h-[520px] px-6 space-y-3">
-          <motion.h1
-            className="font-head text-4xl sm:text-5xl md:text-6xl font-bold text-[#d4af37]"
-            variants={fadeUp}
-            custom={0.3}
-          >
-            Avantika
-          </motion.h1>
+        <motion.p
+          className="tracking-wide text-[#b8962e]"
+          variants={dateVariants}
+        >
+          08 · 08 · 2032
+        </motion.p>
 
-          <motion.p
-            className="text-3xl italic text-[#d4af37]"
-            variants={fadeUp}
-            custom={0.5}
-          >
-            &
-          </motion.p>
-
-          <motion.h2
-            className="font-head text-5xl sm:text-6xl md:text-7xl font-bold text-[#d4af37]"
-            variants={fadeUp}
-            custom={0.7}
-          >
-            Rihaan
-          </motion.h2>
-
-          <motion.p
-            className="text-xl font-title sm:text-2xl tracking-wide text-[#b8962e]"
-            variants={fadeUp}
-            custom={0.9}
-          >
-            08 · 08 · 2032
-          </motion.p>
-
-          <motion.p
-            className="uppercase tracking-[0.35em] font-par text-xs sm:text-sm font-semibold text-[#b8962e]"
-            variants={fadeUp}
-            custom={1.1}
-          >
-            Save the Date
-          </motion.p>
-        </div>
+        <motion.p
+          className="uppercase tracking-[0.35em] text-xs text-[#b8962e]"
+          variants={childVariants}
+        >
+          Save the Date
+        </motion.p>
       </motion.div>
-    </section>
+    </InviteCard>
   );
 };
 
