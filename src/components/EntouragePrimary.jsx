@@ -3,132 +3,76 @@ import InviteCard from "./InviteCard";
 import flower from "../assets/Image/flower.png";
 
 const EntouragePrimary = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.08, delayChildren: 0.3 }
-    }
-  };
-
-  const fadeUpVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
-  };
-
-  const titleVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: { 
-      opacity: 1, 
-      scale: 1, 
-      transition: { duration: 0.7, ease: "easeOut" }
-    }
-  };
-
   return (
     <InviteCard>
-      {/* Static Flowers */}
+      {/* Flowers */}
       <img
         src={flower}
+        className="absolute -top-8 left-0 w-40 pointer-events-none"
         alt=""
-        className="absolute -top-10 left-0 w-40 md:w-56 pointer-events-none select-none"
       />
       <img
         src={flower}
+        className="absolute bottom-0 -right-3 w-36 scale-x-[-1] scale-y-[-1] pointer-events-none"
         alt=""
-        className="absolute bottom-0 -right-4 w-32 md:w-48 scale-x-[-1] scale-y-[-1] pointer-events-none select-none"
       />
 
       {/* Content */}
-      <motion.div 
-        className="text-center mb-12 md:mb-16"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
+      <motion.div
+        className="
+          relative z-10
+          h-full
+          flex flex-col
+          items-center
+          justify-center
+          text-center
+        "
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
       >
-        <motion.h2 
-          className="font-head font-bold text-3xl md:text-4xl lg:text-5xl text-[#8FA7BF] tracking-wide"
-          variants={titleVariants}
-        >
+        <h2 className="font-head text-4xl text-[#8FA7BF] mb-10">
           Entourage
-        </motion.h2>
+        </h2>
 
-        <motion.div 
-          className="mt-12 space-y-4 sm:space-y-5 md:space-y-6 max-w-2xl w-full text-slate-700 text-xs sm:text-sm md:text-base leading-relaxed"
-          variants={fadeUpVariants}
-        >
-          {/* Groom Parents */}
-          <motion.div variants={fadeUpVariants} transition={{ delay: 0.2 }}>
-            <motion.p 
-              className="font-para font-bold tracking-[0.2em] sm:tracking-[0.25em] md:tracking-[0.3em] text-slate-500 text-[9px] sm:text-xs uppercase mb-1"
-              variants={titleVariants}
-            >
+        <div className="space-y-6 text-slate-700">
+          <div>
+            <p className="font-para text-[9px] tracking-[0.3em] text-slate-500 uppercase">
               Parents of the Groom
-            </motion.p>
-            <motion.p 
-              className="font-font text-slate-800"
-              variants={fadeUpVariants}
-            >
-              Shri Groom Father Name
-              <br />
+            </p>
+            <p className="font-font mt-1">
+              Shri Groom Father Name <br />
               Smt. Groom Mother Name
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
-          {/* Bride Parents */}
-          <motion.div variants={fadeUpVariants} transition={{ delay: 0.4 }}>
-            <motion.p 
-              className="font-para font-bold tracking-[0.2em] sm:tracking-[0.25em] md:tracking-[0.3em] text-slate-500 text-[9px] sm:text-xs uppercase mb-1"
-              variants={titleVariants}
-            >
+          <div>
+            <p className="font-para text-[9px] tracking-[0.3em] text-slate-500 uppercase">
               Parents of the Bride
-            </motion.p>
-            <motion.p 
-              className="font-font text-slate-800"
-              variants={fadeUpVariants}
-            >
-              Shri Bride Father Name
-              <br />
+            </p>
+            <p className="font-font mt-1">
+              Shri Bride Father Name <br />
               Smt. Bride Mother Name
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
-          {/* Elders */}
-          <motion.div variants={fadeUpVariants} transition={{ delay: 0.6 }}>
-            <motion.p 
-              className="font-para font-bold tracking-[0.2em] sm:tracking-[0.25em] md:tracking-[0.3em] text-slate-500 text-[9px] sm:text-xs uppercase mb-1"
-              variants={titleVariants}
-            >
+          <div>
+            <p className="font-para text-[9px] tracking-[0.3em] text-slate-500 uppercase">
               Blessings From
-            </motion.p>
-            <motion.p 
-              className="font-font text-slate-800"
-              variants={fadeUpVariants}
-            >
+            </p>
+            <p className="font-font mt-1">
               Grandparents & Elders of Both Families
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
-          {/* Kanyadaan */}
-          <motion.div variants={fadeUpVariants} transition={{ delay: 0.8 }}>
-            <motion.p 
-              className="font-para font-bold tracking-[0.2em] sm:tracking-[0.25em] md:tracking-[0.3em] text-slate-500 text-[9px] sm:text-xs uppercase mb-1"
-              variants={titleVariants}
-            >
+          <div>
+            <p className="font-para text-[9px] tracking-[0.3em] text-slate-500 uppercase">
               Kanyadaan
-            </motion.p>
-            <motion.p 
-              className="font-font text-slate-800"
-              variants={fadeUpVariants}
-            >
+            </p>
+            <p className="font-font mt-1">
               Maternal Uncle & Aunt of the Bride
-            </motion.p>
-          </motion.div>
-        </motion.div>
+            </p>
+          </div>
+        </div>
       </motion.div>
     </InviteCard>
   );
