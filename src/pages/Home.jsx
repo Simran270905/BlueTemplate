@@ -24,7 +24,7 @@ export default function Home() {
   const rotate = useTransform(x, [-300, 300], [-8, 8]);
   const opacity = useTransform(x, [-300, 0, 300], [0, 1, 0]);
 
-  const swipeThreshold = 100;
+  const swipeThreshold = 80; // smaller for mobile
 
   const handleDragEnd = (_, info) => {
     if (info.offset.x < -swipeThreshold && index < cards.length - 1) {
@@ -32,22 +32,23 @@ export default function Home() {
     } else if (info.offset.x > swipeThreshold && index > 0) {
       setIndex((i) => i - 1);
     }
-    x.set(0); // reset position
+    x.set(0);
   };
 
   return (
-    <main className="w-full h-screen overflow-hidden bg-[#f4f6fb] flex items-center justify-center">
+    <main className="w-full min-h-screen bg-[#f4f6fb] flex items-center justify-center overflow-hidden">
       <div className="relative w-full h-full flex items-center justify-center">
 
-        {/* ONLY CURRENT CARD */}
+        {/* CURRENT CARD */}
         <motion.div
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.2}
           onDragEnd={handleDragEnd}
-          style={{ x, rotate, opacity, zIndex: 50 }}
+          style={{ x, rotate, opacity, zIndex: 50, touchAction: "pan-x" }} // important for mobile
           className="
-            absolute w-full h-full cursor-grab active:cursor-grabbing
+            absolute w-full min-h-full
+            cursor-grab active:cursor-grabbing
             flex items-start justify-center
             sm:px-4 md:px-8
           "
@@ -56,7 +57,7 @@ export default function Home() {
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
           whileTap={{ cursor: "grabbing" }}
         >
-          <div className="w-full h-full overflow-y-auto overscroll-contain p-4 sm:p-6 md:p-8">
+          <div className="w-full min-h-full overflow-y-auto overscroll-contain p-4 sm:p-6 md:p-8">
             {cards[index]}
           </div>
         </motion.div>
