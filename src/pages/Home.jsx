@@ -97,7 +97,7 @@ export default function Home() {
       </div>
 
       {/* ================= MOBILE ================= */}
-      <div className="md:hidden px-4 pt-8 pb-24">
+      <div className="md:hidden min-h-screen">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
@@ -105,25 +105,35 @@ export default function Home() {
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.06}
             onDragEnd={handleDragEnd}
-            className="cursor-grab active:cursor-grabbing"
+            className="cursor-grab active:cursor-grabbing relative w-full h-screen flex flex-col"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.4 }}
           >
-            {/* IMAGE */}
-            <div className="relative w-full h-[55vh] mb-6 rounded-xl overflow-hidden">
+            {/* FULL BACKGROUND IMAGE */}
+            <div className="absolute inset-0 w-full h-full z-0">
               <img
                 src={coupleImages[index]}
                 alt="Couple"
-                className="absolute inset-0 w-full h-full object-cover"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-black/30" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-10" />
             </div>
 
-            {/* CARD (NATURAL HEIGHT) */}
-            <div className="w-full max-w-md mx-auto">
-              {cards[index]}
+            {/* CARD CONTENT OVERLAY (NO WHITE BG, NO SCROLL) */}
+            <div className="relative z-20 flex flex-col h-full px-4 pt-12 pb-8 justify-center">
+              <div className="w-full max-w-md mx-auto backdrop-blur-md bg-black/20 border border-white/30 rounded-3xl shadow-2xl p-6">
+                {cards[index]}
+              </div>
+              
+              {/* SWIPE INDICATOR */}
+              <div className="w-full max-w-md mx-auto mt-8 pt-4">
+                <div className="flex items-center justify-center text-white/90 text-sm font-medium">
+                  <span className="w-8 h-1.5 bg-white/70 rounded-full mr-2"></span>
+                  <span>Swipe →</span>
+                </div>
+              </div>
             </div>
           </motion.div>
         </AnimatePresence>
