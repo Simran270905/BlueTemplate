@@ -99,7 +99,7 @@ const WeddingTimeline = () => {
           variants={fadeUpVariants}
           transition={{ delay: 0.2 }}
         >
-          <div className="flex flex-wrap md:flex-nowrap items-stretch justify-between text-[#8FA7BF] gap-6">
+          <div className="flex flex-wrap md:flex-nowrap items-stretch justify-between text-[#8FA7BF] gap-2">
             {[
               { time: "3:00 PM", label: "CEREMONY", icon: engage },
               { time: "4:30 PM", label: "PHOTOS", icon: photos },
