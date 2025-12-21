@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+// src/pages/Home.jsx
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import SaveTheDate from "../components/SaveTheDate";
@@ -35,25 +36,25 @@ const coupleImages = [
 
 export default function Home() {
   const [index, setIndex] = useState(0);
-  const swipeThreshold = 60;
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [index]);
+  const swipeThreshold = 80;
 
   const handleDragEnd = (_, info) => {
     if (info.offset.x < -swipeThreshold && index < cards.length - 1) {
-      setIndex((i) => i + 1);
-    } else if (info.offset.x > swipeThreshold && index > 0) {
-      setIndex((i) => i - 1);
+      setIndex(i => i + 1);
+    }
+    if (info.offset.x > swipeThreshold && index > 0) {
+      setIndex(i => i - 1);
     }
   };
 
+  const currentCard = cards[index];
+  const currentImage = coupleImages[index];
+
   return (
-    <main className="relative w-full min-h-screen bg-gray-900 md:bg-gradient-to-b md:from-[#fbe9dd] md:via-[#c7d8ff] md:to-[#9fb9ff]">
+    <main className="relative w-full h-screen overflow-hidden bg-gray-900 md:bg-gradient-to-b md:from-[#fbe9dd] md:via-[#c7d8ff] md:to-[#9fb9ff]">
 
       {/* ================= DESKTOP ================= */}
-      <div className="hidden md:flex max-w-[1200px] mx-auto min-h-screen items-start justify-center px-6 py-10">
+      <div className="hidden md:flex h-full max-w-[1200px] mx-auto items-center px-6">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
@@ -61,78 +62,75 @@ export default function Home() {
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.08}
             onDragEnd={handleDragEnd}
-            className="flex w-full cursor-grab active:cursor-grabbing"
-            initial={{ rotateY: 10, opacity: 0.9 }}
-            animate={{ rotateY: 0, opacity: 1 }}
-            exit={{ rotateY: -10, opacity: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="flex w-full max-h-[650px] cursor-grab active:cursor-grabbing"
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.5 }}
           >
             {/* LEFT PANEL */}
-            <div className="w-1/2 bg-white rounded-l-2xl shadow-lg p-6 border border-[#8FA7BF]/30">
-              {index % 2 === 0 ? (
-                cards[index]
-              ) : (
+            <div className="w-1/2 bg-white rounded-l-3xl shadow-xl flex items-center justify-center overflow-hidden">
+              {index % 2 === 0 ? currentCard : (
                 <img
-                  src={coupleImages[index]}
+                  src={currentImage}
                   alt="Couple"
-                  className="w-full h-auto object-cover rounded-l-2xl"
+                  className="w-full h-full object-cover rounded-l-3xl"
+                  loading="lazy"
                 />
               )}
             </div>
 
             {/* RIGHT PANEL */}
-            <div className="w-1/2 bg-white rounded-r-2xl shadow-lg p-6 border border-[#8FA7BF]/30">
+            <div className="w-1/2 bg-white rounded-r-3xl shadow-xl flex items-center justify-center overflow-hidden">
               {index % 2 === 0 ? (
                 <img
-                  src={coupleImages[index]}
+                  src={currentImage}
                   alt="Couple"
-                  className="w-full h-auto object-cover rounded-r-2xl"
+                  className="w-full h-full object-cover rounded-r-3xl"
+                  loading="lazy"
                 />
-              ) : (
-                cards[index]
-              )}
+              ) : currentCard}
             </div>
           </motion.div>
         </AnimatePresence>
       </div>
 
       {/* ================= MOBILE ================= */}
-      <div className="md:hidden min-h-screen">
+      <div className="md:hidden w-full h-full">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.06}
+            dragElastic={0.05}
             onDragEnd={handleDragEnd}
-            className="cursor-grab active:cursor-grabbing relative w-full h-screen flex flex-col"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
+            className="relative w-full h-full cursor-grab active:cursor-grabbing"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
           >
-            {/* FULL BACKGROUND IMAGE */}
-            <div className="absolute inset-0 w-full h-full z-0">
-              <img
-                src={coupleImages[index]}
-                alt="Couple"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-10" />
+            {/* Background Image */}
+            <img
+              src={currentImage}
+              alt="Couple"
+              className="absolute inset-0 w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-black/30" />
+
+            {/* Content Card */}
+            <div className="relative z-10 h-full flex items-center justify-center px-4">
+              <div className="w-full max-w-sm backdrop-blur-md bg-black/20 border border-white/25 rounded-3xl shadow-xl p-4">
+                {currentCard}
+              </div>
             </div>
 
-            {/* CARD CONTENT OVERLAY (NO WHITE BG, NO SCROLL) */}
-            <div className="relative z-20 flex flex-col h-full px-4 pt-12 pb-8 justify-center">
-              <div className="w-full max-w-md mx-auto backdrop-blur-md bg-black/20 border border-white/30 rounded-3xl shadow-2xl p-6">
-                {cards[index]}
-              </div>
-              
-              {/* SWIPE INDICATOR */}
-              <div className="w-full max-w-md mx-auto mt-8 pt-4">
-                <div className="flex items-center justify-center text-white/90 text-sm font-medium">
-                  <span className="w-8 h-1.5 bg-white/70 rounded-full mr-2"></span>
-                  <span>Swipe →</span>
-                </div>
+            {/* Swipe Hint */}
+            <div className="absolute bottom-6 w-full flex justify-center z-20">
+              <div className="flex items-center gap-2 text-white/90 text-sm">
+                <span className="w-8 h-1.5 bg-white/70 rounded-full"></span>
+                <span>Swipe</span>
               </div>
             </div>
           </motion.div>
