@@ -1,4 +1,6 @@
-import { motion } from "framer-motion";
+// src/components/WeddingTimeline.jsx
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import InviteCard from "./InviteCard";
 import flower from "../assets/Image/flower.png";
 import engage from "../assets/Image/engage.png";
@@ -16,44 +18,76 @@ const timelineItems = [
 ];
 
 const WeddingTimeline = () => {
-  return (
-    <InviteCard>
-      {/* Fixed Flowers */}
-      <img src={flower} className="absolute top-0 left-0 w-36 md:w-40 pointer-events-none" alt="" />
-      <img src={flower} className="absolute bottom-0 right-0 w-32 md:w-36 scale-x-[-1] scale-y-[-1] pointer-events-none" alt="" />
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
-      <motion.div className="relative z-10 flex flex-col items-center text-center space-y-6 overflow-auto max-h-[90%] px-4 sm:px-6 md:px-8 py-4">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-head font-bold text-[#8FA7BF] mb-8">
+  return (
+    <InviteCard className="relative flex justify-center items-center min-h-[85vh] px-2 sm:px-4">
+      {/* Original Flowers - EXACT SIZES PRESERVED */}
+      <img
+        src={flower}
+        className="absolute top-0 left-0 w-28 sm:w-36 md:w-40 pointer-events-none"
+        alt=""
+      />
+      <img
+        src={flower}
+        className="absolute bottom-0 right-0 w-24 sm:w-32 md:w-36 scale-x-[-1] scale-y-[-1] pointer-events-none"
+        alt=""
+      />
+
+      {/* Content with Original Top Margin */}
+      <motion.div 
+        ref={ref}
+        className="relative z-10 flex flex-col items-center text-center space-y-2 sm:space-y-3 w-full max-w-4xl mt-6 sm:mt-10 py-2"
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.8 }}
+      >
+        {/* Original Title */}
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-head font-bold text-[#8FA7BF] mb-2 sm:mb-3">
           Wedding Timeline
         </h2>
 
-        {/* Timeline Items */}
-        <div className="flex flex-wrap md:flex-nowrap justify-between gap-4 w-full max-w-3xl">
+        {/* Compact Timeline */}
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 w-full px-1">
           {timelineItems.map((item, i) => (
-            <div key={i} className="flex flex-col items-center text-center flex-1 min-w-[80px]">
-              <img src={item.icon} alt={item.label} className="h-8 md:h-10 mb-2 md:mb-3" />
-              <div className="w-full h-[2px] bg-[#8FA7BF] relative mb-2 md:mb-3">
-                <span className="absolute -top-[6px] left-1/2 -translate-x-1/2 w-3 h-3 md:w-4 md:h-4 bg-[#8FA7BF] rounded-full" />
+            <div
+              key={i}
+              className="flex flex-col items-center text-center flex-shrink-0 w-16 sm:w-18 md:w-20"
+            >
+              <img
+                src={item.icon}
+                alt={item.label}
+                className="h-6 sm:h-7 md:h-8 mb-1"
+              />
+              <div className="relative w-5 sm:w-6 h-[1.5px] bg-[#8FA7BF] mb-0.5 sm:mb-1">
+                <span className="absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 sm:w-2 h-1.5 sm:h-2 bg-[#8FA7BF] rounded-full" />
               </div>
-              <p className="text-xs md:text-sm font-sans tracking-widest">{item.time}</p>
-              <p className="text-[9px] md:text-xs mt-1 tracking-widest">{item.label}</p>
+              <p className="text-[9px] sm:text-[10px] md:text-xs font-sans tracking-widest">{item.time}</p>
+              <p className="text-[8px] sm:text-[9px] md:text-[10px] mt-0.5 tracking-widest">{item.label}</p>
             </div>
           ))}
         </div>
 
-        {/* Unplugged Ceremony */}
-        <div className="max-w-md mt-8">
-          <p className="uppercase font-bold text-slate-500 text-xs md:text-sm tracking-wide mb-2">Unplugged Ceremony</p>
-          <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-            Our talented photographers will capture every aspect of our ceremony. We request joyful smiles without the distraction of electronic devices. Please keep them away until we tie the knot.
+        {/* Compact Unplugged */}
+        <div className="max-w-sm mt-3 px-1 sm:px-0 text-xs sm:text-sm">
+          <p className="uppercase font-bold text-slate-500 text-[10px] sm:text-xs tracking-wide mb-1">
+            Unplugged Ceremony
+          </p>
+          <p className="text-xs sm:text-sm text-gray-700 leading-tight">
+            Our talented photographers will capture every aspect of our ceremony. 
+            We request joyful smiles without phones until we tie the knot.
           </p>
         </div>
 
-        {/* Snap & Share */}
-        <div className="max-w-md mt-6">
-          <p className="uppercase font-bold text-slate-500 text-xs md:text-sm tracking-wide mb-2">Snap & Share</p>
-          <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-            Help us capture our special day by tagging us or using our wedding hashtag <br />
+        {/* Compact Snap & Share */}
+        <div className="max-w-sm mt-2 px-1 sm:px-0 text-xs sm:text-sm">
+          <p className="uppercase font-bold text-slate-500 text-[10px] sm:text-xs tracking-wide mb-1">
+            Snap & Share
+          </p>
+          <p className="text-xs sm:text-sm text-gray-700 leading-tight">
+            Help us capture our day by tagging us or using our wedding hashtag 
+            <br />
             <span className="font-bold tracking-wide">#BrideAndGroomUnion</span>
           </p>
         </div>

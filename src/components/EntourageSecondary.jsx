@@ -5,11 +5,11 @@ import flower from "../assets/Image/flower.png";
 const EntourageSecondary = () => {
   return (
     <InviteCard>
-      <img src={flower} className="absolute top-0 left-0 w-36 md:w-40 pointer-events-none" alt="" />
-      <img src={flower} className="absolute bottom-0 right-0 w-32 md:w-36 scale-x-[-1] scale-y-[-1] pointer-events-none" alt="" />
+      <img src={flower} className="absolute top-0 left-0 w-36 md:w-55 pointer-events-none" alt="" />
+      <img src={flower} className="absolute bottom-0 right-0 w-32 md:w-55 scale-x-[-1] scale-y-[-1] pointer-events-none" alt="" />
 
       <motion.div className="relative z-10 flex flex-col items-center text-center space-y-6 overflow-auto max-h-[90%] px-4 sm:px-6 md:px-8 py-4">
-        <p className="uppercase text-sm md:text-base font-bold tracking-wide text-slate-500">
+        <p className="uppercase text-sm md:text-base font-bold tracking-wide text-slate-500 mt-30">
           To Guide Us In Our Sacred Journey
         </p>
 

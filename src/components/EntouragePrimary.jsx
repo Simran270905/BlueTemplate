@@ -5,11 +5,11 @@ import flower from "../assets/Image/flower.png";
 const EntouragePrimary = () => {
   return (
     <InviteCard>
-      <img src={flower} className="absolute top-0 left-0 w-36 md:w-40 pointer-events-none" alt="" />
-      <img src={flower} className="absolute bottom-0 right-0 w-32 md:w-36 scale-x-[-1] scale-y-[-1] pointer-events-none" alt="" />
+      <img src={flower} className="absolute top-0 left-0 w-36 md:w-55 pointer-events-none" alt="" />
+      <img src={flower} className="absolute bottom-0 right-0 w-32 md:w-55 scale-x-[-1] scale-y-[-1] pointer-events-none" alt="" />
 
       <motion.div className="relative z-10 flex flex-col items-center text-center space-y-6">
-        <h2 className="font-head text-4xl md:text-5xl text-[#8FA7BF] mb-8">Entourage</h2>
+        <h2 className="font-head text-4xl md:text-5xl text-[#8FA7BF] mb-8 mt-30">Entourage</h2>
 
         {[
           { label: "Parents of the Groom", names: ["Shri Groom Father Name", "Smt. Groom Mother Name"] },

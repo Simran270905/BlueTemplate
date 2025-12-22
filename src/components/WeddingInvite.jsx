@@ -19,17 +19,17 @@ const WeddingInvite = () => {
   };
 
   return (
-    <InviteCard>
+    <InviteCard className="relative flex justify-center items-center min-h-[500px] sm:min-h-[600px] md:min-h-[700px]">
       {/* Decorative flowers */}
       <img
         src={flower4}
         alt=""
-        className="absolute bottom-0 right-0 w-32 sm:w-40 md:w-48 pointer-events-none"
+        className="absolute bottom-0 right-0 w-32 sm:w-40 md:w-55 pointer-events-none"
       />
       <img
         src={flower4}
         alt=""
-        className="absolute top-0 left-0 w-32 sm:w-40 md:w-48 scale-x-[-1] scale-y-[-1] pointer-events-none"
+        className="absolute top-0 left-0 w-32 sm:w-40 md:w-55 scale-x-[-1] scale-y-[-1] pointer-events-none"
       />
 
       {/* Content */}

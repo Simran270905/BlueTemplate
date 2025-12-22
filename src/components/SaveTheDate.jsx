@@ -5,9 +5,9 @@ import flower1 from "../assets/Image/flower1.png";
 const SaveTheDate = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15, delayChildren: 0.2 }
+    visible: { 
+      opacity: 1, 
+      transition: { staggerChildren: 0.15, delayChildren: 0.2 } 
     }
   };
 
@@ -16,7 +16,7 @@ const SaveTheDate = () => {
     visible: { 
       opacity: 1, 
       y: 0, 
-      transition: { duration: 0.6, ease: "easeOut" }
+      transition: { duration: 0.6, ease: "easeOut" } 
     }
   };
 
@@ -26,7 +26,7 @@ const SaveTheDate = () => {
       opacity: 1, 
       scale: 1, 
       rotateX: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
+      transition: { duration: 0.8, ease: "easeOut" } 
     }
   };
 
@@ -35,35 +35,34 @@ const SaveTheDate = () => {
     visible: { 
       opacity: 1, 
       scale: 1, 
-      transition: { duration: 0.7, ease: "easeOut", bounce: 0.2 }
+      transition: { duration: 0.7, ease: "easeOut", bounce: 0.2 } 
     }
   };
 
   return (
     <InviteCard>
-      {/* Animated Flower Background */}
-      <motion.img
-        src={flower1}
-        alt=""
-        className="absolute inset-0 w-full h-full object-cover scale-x-[-1] opacity-60"
-        style={{ willChange: "transform" }}
-        animate={{ 
-          scale: [1, 1.05, 1],
-          rotate: [0, 1, -1, 0],
-          transition: { 
-            duration: 4, 
-            repeat: Infinity, 
-            ease: "easeInOut" 
-          }
-        }}
-      />
+      {/* Full-cover background */}
+      <motion.div className="absolute inset-0 w-full h-full">
+        <motion.img
+          src={flower1}
+          alt=""
+          className="w-full h-full object-cover scale-x-[-1] opacity-60"
+          animate={{
+            scale: [1, 1.05, 1],
+            rotate: [0, 1, -1, 0],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" />
+      </motion.div>
 
-      {/* Overlay for better readability */}
-      <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" />
-
-      {/* Content */}
+      {/* Centered Content */}
       <motion.div
-        className="relative z-10 flex flex-col items-center justify-center h-full text-center space-y-3 px-4 sm:px-6"
+        className="relative z-10 flex flex-col items-center justify-center text-center w-full h-full px-4 sm:px-6"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -80,7 +79,11 @@ const SaveTheDate = () => {
           variants={childVariants}
           animate={{
             scale: [1, 1.05, 1],
-            transition: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
           }}
         >
           &amp;
