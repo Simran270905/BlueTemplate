@@ -2,22 +2,41 @@ import { motion } from "framer-motion";
 import InviteCard from "./InviteCard";
 import flower4 from "../assets/Image/flower4.png";
 
+const weddingInviteConfig = {
+  id: "wedding-invite-1",
+  brideName: "Avantika",
+  groomName: "Rihaan",
+  date: {
+    day: "8",
+    month: "AUGUST",
+    weekday: "SATURDAY",
+    time: "AT 03:00 PM",
+  },
+  venue: "The Taj Mahal Palace, Apollo Bandar, Colaba,\nMumbai, Maharashtra 400001",
+  headerText: "You Are Invited To\nThe Wedding Of",
+  colors: {
+    primary: "#8FA7BF",  // Blue-gray
+    secondary: "#64748B", // Darker slate
+    accent: "#1E293B",    // Slate-800
+  },
+};
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.06, delayChildren: 0.2 } },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 18 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
+};
+
+const nameVariants = {
+  hidden: { opacity: 0, scale: 0.96 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
+};
+
 const WeddingInvite = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.06, delayChildren: 0.2 } },
-  };
-
-  const fadeUp = {
-    hidden: { opacity: 0, y: 18 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
-  };
-
-  const nameVariants = {
-    hidden: { opacity: 0, scale: 0.96 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
-  };
-
   return (
     <InviteCard className="relative flex justify-center items-center min-h-[500px] sm:min-h-[600px] md:min-h-[700px]">
       {/* Decorative flowers */}
@@ -41,34 +60,36 @@ const WeddingInvite = () => {
       >
         {/* Header */}
         <motion.p
-          className="font-para text-[9px] sm:text-[10px] md:text-[11px] tracking-[0.25em] text-slate-500 mb-4 md:mb-5 uppercase"
+          className="font-para text-[9px] sm:text-[10px] md:text-[11px] tracking-[0.25em] mb-4 md:mb-5 uppercase"
+          style={{ color: weddingInviteConfig.colors.secondary }}
           variants={fadeUp}
         >
-          You Are Invited To
-          <br />
-          The Wedding Of
+          {weddingInviteConfig.headerText}
         </motion.p>
 
         {/* Names */}
         <motion.h1
-          className="font-monster text-2xl sm:text-3xl md:text-5xl text-[#8FA7BF] leading-tight"
+          className="font-monster text-2xl sm:text-3xl md:text-5xl leading-tight"
+          style={{ color: weddingInviteConfig.colors.primary }}
           variants={nameVariants}
         >
-          Avantika
+          {weddingInviteConfig.brideName}
         </motion.h1>
 
         <motion.p
-          className="font-monster text-xl sm:text-2xl md:text-3xl text-[#8FA7BF] my-1"
+          className="font-monster text-xl sm:text-2xl md:text-3xl my-1"
+          style={{ color: weddingInviteConfig.colors.primary }}
           variants={fadeUp}
         >
           &amp;
         </motion.p>
 
         <motion.h1
-          className="font-monster text-2xl sm:text-3xl md:text-5xl text-[#8FA7BF] mb-5 md:mb-6"
+          className="font-monster text-2xl sm:text-3xl md:text-5xl mb-5 md:mb-6"
+          style={{ color: weddingInviteConfig.colors.primary }}
           variants={nameVariants}
         >
-          Rihaan
+          {weddingInviteConfig.groomName}
         </motion.h1>
 
         {/* Date */}
@@ -76,30 +97,37 @@ const WeddingInvite = () => {
           className="flex justify-center items-center gap-2 md:gap-3 mb-3 md:mb-4"
           variants={fadeUp}
         >
-          <p className="font-para text-[9px] sm:text-[10px] tracking-[0.25em] text-slate-600">
-            SATURDAY
+          <p className="font-para text-[9px] sm:text-[10px] tracking-[0.25em]" style={{ color: weddingInviteConfig.colors.secondary }}>
+            {weddingInviteConfig.date.weekday}
           </p>
-          <p className="font-para text-xl sm:text-2xl md:text-2xl text-slate-800">8</p>
-          <p className="font-para text-[9px] sm:text-[10px] tracking-[0.25em] text-slate-600">
-            AT 03:00 PM
+          <p className="font-para text-xl sm:text-2xl md:text-2xl" style={{ color: weddingInviteConfig.colors.accent }}>
+            {weddingInviteConfig.date.day}
+          </p>
+          <p className="font-para text-[9px] sm:text-[10px] tracking-[0.25em]" style={{ color: weddingInviteConfig.colors.secondary }}>
+            {weddingInviteConfig.date.time}
           </p>
         </motion.div>
 
         <motion.p
-          className="font-para text-[9px] sm:text-[10px] tracking-[0.25em] text-slate-600 mb-3 md:mb-5 uppercase"
+          className="font-para text-[9px] sm:text-[10px] tracking-[0.25em] mb-3 md:mb-5 uppercase"
+          style={{ color: weddingInviteConfig.colors.secondary }}
           variants={fadeUp}
         >
-          AUGUST
+          {weddingInviteConfig.date.month}
         </motion.p>
 
         {/* Address */}
         <motion.p
-          className="font-para text-[10px] sm:text-[11px] md:text-sm text-slate-600 leading-relaxed max-w-xs mx-auto"
+          className="font-para text-[10px] sm:text-[11px] md:text-sm leading-relaxed max-w-xs mx-auto"
+          style={{ color: weddingInviteConfig.colors.secondary }}
           variants={fadeUp}
         >
-          The Taj Mahal Palace, Apollo Bandar, Colaba,
-          <br />
-          Mumbai, Maharashtra 400001
+          {weddingInviteConfig.venue.split('\n').map((line, i) => (
+            <span key={i}>
+              {line}
+              {i < weddingInviteConfig.venue.split('\n').length - 1 && <br />}
+            </span>
+          ))}
         </motion.p>
       </motion.div>
     </InviteCard>
